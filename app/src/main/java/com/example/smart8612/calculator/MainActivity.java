@@ -6,7 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.StringTokenizer;
+import static com.example.smart8612.calculator.MathEval.postfixChanger;
+import static com.example.smart8612.calculator.MathEval.postfixEval;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -63,7 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         tmpTxt = "";
                         break;
                     case "=":
-                        tmpTxt = eval(tmpTxt);
+                        tmpTxt = postfixChanger(tmpTxt);
+                        tmpTxt = String.valueOf(postfixEval(tmpTxt));
                         break;
 
                     default:
@@ -104,36 +106,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         
     }
 
-    public String eval(String exp) {
-        String Answer = "";
 
-        StringTokenizer st = new StringTokenizer(exp, "+-*/", true);
-
-        if (st.hasMoreTokens()) {
-            double firstNum = Double.parseDouble(st.nextToken().toString());
-            String operator = st.nextToken().toString();
-            double secondNum = Double.parseDouble(st.nextToken().toString());
-
-            switch (operator) {
-                case "+":
-                    Answer = String.valueOf(firstNum + secondNum);
-                    break;
-
-                case "-":
-                    Answer = String.valueOf(firstNum - secondNum);
-                    break;
-
-                case "*":
-                    Answer = String.valueOf(firstNum * secondNum);
-                    break;
-
-                case "/":
-                    Answer = String.valueOf(firstNum / secondNum);
-                    break;
-            }
-        }
-
-        return Answer;
-    }
 
 }
