@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import static com.example.smart8612.calculator.MathEval.postfixChanger;
 import static com.example.smart8612.calculator.MathEval.postfixEval;
 
 
@@ -64,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         tmpTxt = "";
                         break;
                     case "=":
-                        tmpTxt = postfixChanger(tmpTxt);
                         tmpTxt = String.valueOf(postfixEval(tmpTxt));
                         break;
 
